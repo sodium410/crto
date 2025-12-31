@@ -1,6 +1,7 @@
 https://www.zeropointsecurity.co.uk/course/red-team-ops  
 Study time: 20 Hours  
 
+Discord:  private discord channel   
 Support: support@zeropointsecurity.co.uk  
 
 **What's included**:  
