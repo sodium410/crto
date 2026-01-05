@@ -36,7 +36,7 @@ Reconnaissance-->Weaponisation-->Delivery-->Exploitation-->Installation-->Comman
 
 **Engagement planning**:  
 Goal planning: what ability does a threat have...  
-to gain physical/remote access, to gain elevated access, to move freely in network, to identify/access sensitive info, to initiate a reaction from org  
+to gain physical/remote access, to gain elevated access, to move freely in network, to identify/access sensitive info, how to alert  
 Rules of Engagement: authorized targets, engagement objectives, any other restrictions  
 Do's: log all actions, understand your tools, be aware   
 Dont's: use untested or pre-compiled tools, use unencrypted channels for C2, exfiltrate restricted data, disable security controls  
