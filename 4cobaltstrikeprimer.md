@@ -101,5 +101,9 @@ help
 help getuid  
 youl understand more when you actially interact with the tool  
 
+https://www.cobaltstrike.com/blog/beacon-an-operators-guide  
+
+----LAB----  
+
 
 
