@@ -23,6 +23,38 @@ Operator GUI → Team Server port 50050 or 55005 ---> Configure Listeners --->Te
 Beacon ALWAYS sends task output back through the listener port, not the Team Server port.  eg: getuid  
 
 Think of team server port like a checkpoint admin client connecting to checkpoint management server for administration  
+can be more than one operator sessions, can see all sessions on client  
+
+team server should be a linux box  
+
+./team-server x.x.x.x password optional_profile  
+
+can use event logs to collaborate with other operators  -- like a livechat  
+
+operator can connect to multiple team servers  
+1 for say initial access, 1 for priv esc, 1 for data exfiltration   
+and maybe 1 low and slow server for long haul  
+
+Beacon → Listener port  
+Operator Client → Team Server port  
+operator client is not installed on target just the beacon payload  
+
+beacon logs on team server -- aggressor/logs   
+
+basicaly no gui is installed on team server -- so its the oprator client that enables this gui  
+
+reports menu -- all reports - can merge reports from multiple team servers  
+
+So say i start the team server on gcp, operator client on local kali , and beacon payload on target  
+how does beacon payload know which listener to talk to ?  
+A Beacon knows which listener to communicate with because the listener information is embedded inside the Beacon payload at generation time.  
+This configuration is stored in the Beacon binary itself based on the listener you select when building the payload.  
+
+## Infrasrtucture  
+
+
+
+ 
 
 
 
