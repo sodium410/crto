@@ -51,11 +51,53 @@ A Beacon knows which listener to communicate with because the listener informati
 This configuration is stored in the Beacon binary itself based on the listener you select when building the payload.  
 
 ## Infrasrtucture  
-Listener -- payload handler/data plane    
+**Listener** -- payload handler/data plane    
 Type of listeners --- egress -- http/s, dns , peer-to-peer  -- smb, tcp, alias - handler in other toolset  
 listener name - should be descriptive enough  
 
-stagets are more less secure, more brittle, easier to detect -- hence better to use stageless payloads  
+stagers are less secure, more brittle, easier to detect -- hence better to use stageless payloads  
+stagers when size is a limitation  example: stager after landing GET request to downlaod payload in bits  
+
+now by default its stageless  
+
+so if http listener based payload can call it http beacon, if dns based then dns beacon  
+
+scenario...  
+say http beacon is dropped on target, what it does -- reach c2 team server Via get and ask do you have any task for me !!  
+team server could say no nothing then beacon will goto sleep for defined time  
+then beacon wakes up -- sends a get request again -- this time if c2 has something -- the encrypted task data is sent to beacon  
+beacon then sends a post request to c2 with results of the tasks performed  
+so what happens with malleable profile is define example - instead of 1 big post break it into multiple gets  
+
+A Beacon knows which listener to communicate with because the listener information is embedded inside the Beacon payload at generation time.  
+Encryption configuration is stored in the Beacon binary itself based on the listener you select when building the payload.  
+Beacon data (AES encrypted)--->wrapped inside HTTP(S)---> Protected by TLS certificate  
+
+if you define a proxy (HTTP/SOCKS) inside a Cobalt Strike HTTP/HTTPS listener, that proxy setting is embedded into the Beacon payload,  
+and the deployed Beacon will use that proxy for all of its outbound C2 traffic.  
+
+connect to team server  
+start http listener with defaults  
+use attacks->scripted web delivery-->select http listener and payload type --> press launch --> payload will be ready on listener waiting -- copy the powershel command run it on target --- this downloads the payload from listener and runs it on target  
+now should have a http reverse shell session on operator client !!   
+
+https listeners are same with cert, can use own certs recommended  
+
+**Redirectors**  acts as intermediate proxies between beacon and team servers  
+use nginx,apache,cdn,iptables or socat to forward traffic to team server  
+socat tcp4-listen:80,fork tcp4:team.server:80   
+
+now allows for multiple egress listeners  
+multiple smb tcp listeners ok as well  
+can have 2 http listeners on port 80 with differnet profiles -- possible  -- server consolidation  
+
+
+
+
+
+
+
+
 
 
  
