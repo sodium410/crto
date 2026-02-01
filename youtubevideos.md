@@ -51,7 +51,11 @@ A Beacon knows which listener to communicate with because the listener informati
 This configuration is stored in the Beacon binary itself based on the listener you select when building the payload.  
 
 ## Infrasrtucture  
+Listener -- payload handler/data plane    
+Type of listeners --- egress -- http/s, dns , peer-to-peer  -- smb, tcp, alias - handler in other toolset  
+listener name - should be descriptive enough  
 
+stagets are more less secure, more brittle, easier to detect -- hence better to use stageless payloads  
 
 
  
