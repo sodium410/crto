@@ -83,6 +83,24 @@ now should have a http reverse shell session on operator client !!
 
 https listeners are same with cert, can use own certs recommended  
 
+**DNS listeners** -- A record requests and 0.0.0.0 in response and task data in response if any pending  
+modep command to use dns for c2 check and http for data trasfer  
+making team server authoritative name server for the domains and subdomains you control and when nslookup on victim it should reach teamserver  
+should have valid ns and a records configured for this to work  
+team server ip is no where input on listener, just the fqdn which have A records configured on our dns ns Which points to team server  
+works but time taking  
+
+**SMB beacons** --- works on named pipes in local net, window then encapsulates that comms in smb    
+smb listener not a real network listener — it is a payload configuration option.  with unique pipename  
+initial access say http beacon, can have additional smb beacons that report back to http and each smb beacon can in turn control other smb beacons  
+
+smb beacon--->smb beacon--->httpbeacon  
+**TCP beacon** --- very similar to smb but binding to tcp port  
+For both tcp and smb beacons the payloads downlaoded from egress listener which is http/dns     
+
+**External C2 listeners** - to make use of 3rd party tools to communicate with cobaltstrike  
+just a relay  
+
 **Redirectors**  acts as intermediate proxies between beacon and team servers  
 use nginx,apache,cdn,iptables or socat to forward traffic to team server  
 socat tcp4-listen:80,fork tcp4:team.server:80   
@@ -90,6 +108,11 @@ socat tcp4-listen:80,fork tcp4:team.server:80
 now allows for multiple egress listeners  
 multiple smb tcp listeners ok as well  
 can have 2 http listeners on port 80 with differnet profiles -- possible  -- server consolidation  
+
+kali---operator    //is below valid ? yes  
+smb beacon--->http beacon--->CDN--->Team server  
+
+2 videos done  
 
 
 
